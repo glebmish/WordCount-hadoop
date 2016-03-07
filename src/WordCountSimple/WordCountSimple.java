@@ -1,3 +1,5 @@
+package org.myorg;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
@@ -39,6 +41,7 @@ public class WordCountJob {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "WordCount");
+	job.setJarByClass(WordCountJob.class);
 
         TextInputFormat.addInputPath(job, new Path(args[0]));
         job.setInputFormatClass(TextInputFormat.class);
